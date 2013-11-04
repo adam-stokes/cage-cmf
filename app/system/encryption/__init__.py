@@ -2,7 +2,6 @@ import base64
 import urllib
 import Crypto.Cipher.AES as AES
 
-
 def encrypt(key, decrypted_str):
     encryptor = AES.new(key[0:16])
     # Pad the string to be multiple of 16

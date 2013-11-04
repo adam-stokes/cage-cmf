@@ -1,6 +1,8 @@
 # cage
 
-content management framework built on python 3, tornado, and mongo.
+content management framework built on python 3, tornado, and
+mongo. this is the RESTful backend and is not intended to be exposed
+to the public.
 
 ## requirements
 
@@ -24,4 +26,5 @@ use nginx with proxy_paas, look in `scripts/deploy-post` for an example.
 # license & copyright
 
 (c) 2011-2013 Adam Stokes
+
 MIT

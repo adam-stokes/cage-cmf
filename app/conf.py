@@ -5,12 +5,14 @@ class Config(object):
         self.ui_apps = ['base']
         self.enable_admin = True
         self.db = { 
-            'name' : 'test',
-            'conn' : 'mongodb://localhost:27017'
+            'name' : 'cagecmf',
+            'conn' : 'mongodb://localhost:27017/'
         }
         self.template = 'default'
+        self.static_path = None
+        self.app_path = None
         self.debug = True
         self.cookie_secret = '45d1d9ed94c34749a95960db2c68c652'
         self.addons = []
-        self.platform_version = '1.0.0'
+        self.platform_version = '0.5.0'
         self.port = 9000

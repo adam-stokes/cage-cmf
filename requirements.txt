@@ -1,6 +1,5 @@
 Pygments
 beautifulsoup4
-bpython
 lxml
 markdown2
 pyScss
