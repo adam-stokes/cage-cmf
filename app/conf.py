@@ -1,7 +1,6 @@
 class Config(object):
     def __init__(self, **kwds):
         # TODO use kwds to override defaults
-        self.login_url = '/auth/login'
         self.ui_apps = ['base']
         self.enable_admin = True
         self.db = { 

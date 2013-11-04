@@ -73,7 +73,6 @@ class Application(tornado.web.Application):
             static_path=self.cfg.static_path,
             xsrf_cookies=True,
             cookie_secret=self.cfg.cookie_secret,
-            login_url=self.cfg.login_url,
             debug=self.cfg.debug,
             ui_modules=ui_modules_map,
             )

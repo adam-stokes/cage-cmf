@@ -2,7 +2,7 @@ from tornado.template import Loader
 from app.system.handler import BaseHandler
 import os
 
-data = {'test_json': 'some test json data'}
+data = {'info': 'default handler, should be replaced.'}
 
 class IndexHandler(BaseHandler):
     def get(self):
