@@ -1,0 +1,4 @@
+Contrib README
+
+All third party libraries should be put into app/system/contrib. See the
+app/system/contrib/blog directory for a simple example.

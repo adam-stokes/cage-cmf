@@ -1,0 +1,23 @@
+<!-- default base.html template -->
+<!DOCTYPE html>
+<head>
+        <title>{% block title %}cage{% end %}</title>
+        <link href='/media/{{ handler.cfg.template }}/css/basic.css' rel='stylesheet'
+                type='text/css'>
+{% block extrahead %}
+{% end %}
+</head>
+<body>
+{% block header %}
+
+{% end %}
+  {% block mainnav %}
+    {% module PageNav() %}
+  {% end %}
+{% block content %}{% end %}
+{% block footer %}
+{% end %}
+{% block extrajs %}
+{% end %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% extends "base.html" %}
+<p>{% if len(errmsg) > 0 %}
+{{ errmsg }}
+{% end %}
+</p>
+<h3>Thing Post</h3>
+<form method="POST" action="/thing/add">
+{% raw xsrf_form_html() %}
+<p>
+Title<br />
+<input type="text" name="title" size="55" />
+</p>
+<p>
+Content<br />
+<textarea cols="45" rows="40" name="content"></textarea>
+</p>
+<input type="submit" value="Add" />
+</form>
+{% end %}

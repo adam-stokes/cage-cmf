@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if editor %}
+  {% include "../../static/vendor/inc/layout_ui.html" %}
+  {% elif data.page and hasattr(data.page, 'body') %}
+     {% raw data.page.body %}
+  {% else %}
+     No content yet.
+  {% end %}
+{% end %}
+{% block extrajs %}
+{% if editor %}
+  <script src="/media/vendor/js/jquery.jeditable.mini.js"></script>
+  <script src="/media/vendor/js/designer.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#ajscg-content').ajscgBit({ url : '/admin/content/edit/?_xsrf={{ data._xsrf }}'});
+    });
+  </script>
+{% end %}
+
+{% end %}
+
+

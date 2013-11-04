@@ -1,0 +1,10 @@
+Pygments
+beautifulsoup4
+bpython
+lxml
+markdown2
+pyScss
+pycrypto
+pytz
+tornado
+pymongo
