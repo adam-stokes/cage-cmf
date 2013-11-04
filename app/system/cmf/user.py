@@ -1,8 +1,8 @@
-from .types import *
+from app.system.cmf.types import *
 
-class User(object):
+class User(Entity):
     """ User CMF type """
     def __init__(self, **kwds):
         self.fullname = Blob(kwds['fullname'])
         self.email = Blob(kwds['email'])
-        self.password = Password(kwds['password'])
+        self.apikey = APIKey()

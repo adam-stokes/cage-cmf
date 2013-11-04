@@ -1,6 +1,6 @@
-from .types import *
+from app.system.cmf.types import *
 
-class Page(object):
+class Page(Entity):
     """ Page CMF type """
     def __init__(self, **kwds):
         self.title = Blob(kwds['title'])
