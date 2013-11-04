@@ -8,10 +8,10 @@ python >= 3.3.2, mongo
 
 ## installation
 
-`git clone git@github.com:battlemidget/cage.git`
-`cd cage`
-`pip install -r requirements.txt`
-`./claw -d -r`
+	git clone git@github.com:battlemidget/cage.git
+	cd cage
+	pip install -r requirements.txt
+	./claw -d -r
 
 ## viewing
 
