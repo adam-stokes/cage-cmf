@@ -1,58 +1,56 @@
 # CMF types
 from datetime import datetime
-import json
-from app.system.encryption import decrypt, encrypt
+from bson.json_util import dumps
+from app.system.db import Dbh
+from app.system.util.loader import load_by_name
 
 class Entity(object):
-    def to_json(self):
+    """ helper class for converting entities to different formats """
+    def __init__(self, cmf_entity_name):
+        self.db = Dbh()
+        self.entity_name = cmf_entity_name
+        self.entity = load_by_name('app.system.cmf.%s' % (self.entity_name,), self.entity_name.capitalize())()
+
+    # private
+    def _create_entity(self):
+        return load_by_name('app.system.cmf.%s' % (self.entity_name,), self.entity_name.capitalize())()
+
+    def _merge_results(self, results):
+        """ multi purpose method to merge mongo results into entity """
+        if isinstance(results, list):
+            for item in results:
+                klass = self._create_entity()
+                for k in item.keys():
+                    if hasattr(klass, k):
+                        setattr(klass, k, item[k])
+                return klass
+        elif isinstance(results, dict):
+            klass = self._create_entity()
+            for k in results.keys():
+                if hasattr(klass, k):
+                    setattr(klass, k, results[k])
+            return klass
+        else:
+            return {'Error' : 'Unable to set attributes'}
+
+    # public
+    @property
+    def collection(self):
+        return self.db.set_collection(self.entity_name)
+
+    @property
+    def to_json(self, entity):
         """ converts cmf type to json """
-        return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        return dumps(entity, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-    def to_yaml(self):
-        """ converts cmf type to yaml """
-        pass
+    def find(self, filter_={}):
+        return self._merge_results(list(self.collection.find(filter_)))
 
-class Blob(object):
-    def __init__(self, data):
-        self.data = data
+    def find_one(self, filter_={}):
+        return self._merge_results(self.collection.find_one(filter_))
 
-    def __str__(self):
-        return "%s" % (self.data,)
+    def save(self, entity):
+        return self.collection.save(entity.__dict__)
 
-    def __repr__(self):
-        return self.__str__()
-
-class DateTime(object):
-    def __init__(self, data):
-        self.data = data
-
-    def __str__(self):
-        return "%s" % (self.data,)
-
-    def __repr__(self):
-        return self.__str__()
-
-class APIKey(object):
-    """ api key type """
-    def __str__(self):
-        return "not implemented"
-        
-    def __call__(self):
-        return self.__str__()
-
-    def __repr__(self):
-        return self.__str__()
-
-class Spinner(object):
-    def __init__(self, count):
-        self.count = count
-
-    def __str__(self):
-        return "%s" % (str(self.count),)
-    
-    def __repr__(self):
-        return self.__str__()
-
-class List(list):
-    def __init__(self, data):
-        self.data = data
+    def insert(self, entity):
+        return self.collection.insert(entity.__dict__)

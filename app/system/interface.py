@@ -63,8 +63,7 @@ class Application(tornado.web.Application):
 
         urls = [
             (r"/", "app.controllers.views.IndexHandler"),
-            (r"/types/([a-z0-9-]+$)", "app.controllers.views.TypeHandler"),
-            (r"/entity/([a-z0-9-]+$)", "app.controllers.views.EntityHandler"),
+            (r"/entity/([A-Za-z0-9-]+$)", "app.controllers.views.EntityHandler"),
             (r"/media/(.*)", 'tornado.web.StaticFileHandler', {'path' : self.cfg.static_path}),
             ]
 

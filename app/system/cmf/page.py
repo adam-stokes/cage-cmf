@@ -1,12 +1,11 @@
-from app.system.cmf.types import *
+""" Pages Type for defining structured single or multi page documents """
 
-class Page(Entity):
-    """ Page CMF type """
+class Page(object):
+    """ SinglePage CMF type """
+
+    type_name = 'Page'
+
     def __init__(self, **kwds):
-        self.title = Blob(kwds['title'])
-        self.summary = Blob(kwds['summary'])
-        self.body = Blob(kwds['body'])
-        self.author = Blob(kwds['author'])
-        self.created = DateTime(kwds['created'])
-        self.modified = DateTime(kwds['modified'])
-        self.views = Spinner(kwds['views'])
+        self.title = kwds.get('title', 'SinglePage Document')
+        self.author = kwds.get('author', 'Undefined author')
+        self.content = kwds.get('content', 'Undefined content')

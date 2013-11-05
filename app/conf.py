@@ -5,7 +5,8 @@ class Config(object):
         self.enable_admin = True
         self.db = { 
             'name' : 'cagecmf',
-            'conn' : 'mongodb://localhost:27017/'
+            'conn' : 'mongodb://localhost:27017/',
+            'env' : 'testing',
         }
         self.template = 'default'
         self.static_path = None

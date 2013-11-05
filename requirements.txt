@@ -1,8 +1,5 @@
 Pygments
-beautifulsoup4
-lxml
-markdown2
-pyScss
+PyYAML
 pycrypto
 pytz
 tornado
