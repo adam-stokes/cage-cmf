@@ -11,8 +11,8 @@ class Config(object):
         self.template = 'default'
         self.static_path = None
         self.app_path = None
-        self.debug = True
         self.cookie_secret = '45d1d9ed94c34749a95960db2c68c652'
         self.addons = []
         self.platform_version = '0.5.0'
+        self.platform_name = 'CAGE CMF API Server'
         self.port = 9000

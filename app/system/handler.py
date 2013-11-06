@@ -1,7 +1,7 @@
 import tornado.web
 import logging
 import os
-import json
+from app.system.util.serialize import to_json
 from tornado.escape import to_unicode
 from tornado.template import Loader
 
@@ -25,11 +25,11 @@ class BaseHandler(tornado.web.RequestHandler):
 
     # API render
     def render_json(self, content):
-        content_json = json.dumps(content)
+        content_json = to_json(content)
         self.set_header("Content-Type", "application/json")
         if self.is_argument_present("callback"):
-            self.write('%s(%s)' % (self.get_argument('callback'), content))
+            self.write('%s(%s)' % (self.get_argument('callback'), content_json))
         else:
-            self.write(content)
+            self.write(content_json)
 
 
