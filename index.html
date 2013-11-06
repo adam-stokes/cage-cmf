@@ -36,9 +36,34 @@ mongo. this is the RESTful backend and is not intended to be exposed
 to the public.</p>
 
 <h2>
+<a name="idea-behind-this" class="anchor" href="#idea-behind-this"><span class="octicon octicon-link"></span></a>idea behind this?</h2>
+
+<p>well, I wanted something that handles different entity types
+individual of each other. for example, I wanted to query for a
+<code>activity</code> entity type that would provide me access to a <code>status</code>
+attribute that could be manipulated by a frontend application anyway I
+see fit. Kind of like Drupal's custom field attributes, or Wordpress'
+custom advanced fields. Obviously, with a smaller footprint and
+entities encoded in json so I could easily write any frontend I wanted
+as long as it knew what json was. Im sure this has been done million
+times over but I was bored.</p>
+
+<p>some things I want to implement:</p>
+
+<ul>
+<li>entity constraints</li>
+<li>mongo's replication features</li>
+<li>entity helpers/validators</li>
+</ul><p>some things that shouldnt be here:</p>
+
+<ul>
+<li>authentication - its not intended to be public</li>
+<li>entity dependencies on each other</li>
+<li>a bear</li>
+</ul><h2>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>requirements</h2>
 
-<p>python &gt;= 3.3.2, mongo</p>
+<p>python &gt;= 3.3.2, mongo, &lt;3</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>installation</h2>
@@ -46,23 +71,46 @@ to the public.</p>
 <pre><code>git clone git@github.com:battlemidget/cage.git
 cd cage
 pip install -r requirements.txt
-./claw -d -r
 </code></pre>
+
+<h2>
+<a name="run-in-debug-mode-autoreload-enabled" class="anchor" href="#run-in-debug-mode-autoreload-enabled"><span class="octicon octicon-link"></span></a>Run in debug mode (autoreload enabled)</h2>
+
+<pre><code>./claw --debug
+</code></pre>
+
+<p>Single instance, increased logging, and autoreload during changes.</p>
+
+<h2>
+<a name="run-in-production" class="anchor" href="#run-in-production"><span class="octicon octicon-link"></span></a>Run in production</h2>
+
+<pre><code>./claw
+</code></pre>
+
+<p>This will run multiple instances equal to your num of cpus. Autoreload
+is not available in this mode.</p>
 
 <h2>
 <a name="viewing" class="anchor" href="#viewing"><span class="octicon octicon-link"></span></a>viewing</h2>
 
-<p><code>http://localhost:9000</code></p>
+<p>There's really nothing to "view" in a browser, but the default port is
+<code>9000</code> so you could visit <code>http://localhost:9000</code> if you're feeling
+squirrely.</p>
 
 <h2>
 <a name="deploy" class="anchor" href="#deploy"><span class="octicon octicon-link"></span></a>deploy</h2>
 
-<p>use nginx with proxy_paas, look in <code>scripts/deploy-post</code> for an example.</p>
+<p>I like nginx so use that with proxy_pass, look in
+<code>scripts/deploy-post</code> for an example. Or you're own proxy server
+that'll handle a cluster of cage instances.</p>
 
 <h1>
-<a name="license--copyright" class="anchor" href="#license--copyright"><span class="octicon octicon-link"></span></a>license &amp; copyright</h1>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>copyright</h1>
 
 <p>(c) 2011-2013 Adam Stokes</p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>license</h1>
 
 <p>MIT</p>
         </section>
