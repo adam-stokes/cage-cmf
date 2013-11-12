@@ -12,3 +12,4 @@ class News(object):
         self.published = kwds.get('published', datetime.now())
         self.created = kwds.get('created', datetime.now())
         self.modified = kwds.get('modified', datetime.now())
+        self.comments = []

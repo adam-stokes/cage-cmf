@@ -1,4 +1,5 @@
 from bson.objectid import ObjectId
+
 class Mood(object):
     """ Mood CMF type """
 
