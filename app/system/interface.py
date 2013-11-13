@@ -49,8 +49,14 @@ class Application(tornado.web.Application):
 
         urls = [
             (r"/", "app.controllers.views.IndexHandler"),
-            (r"/entity/([A-Za-z0-9-]+$)", "app.controllers.views.EntityHandler"),
-            (r"/entity", "app.controllers.views.EntityHandler"),
+            (r"/entity/([A-Za-z0-9-]+$)",
+             "app.controllers.views.EntityHandler"),
+            (r"/entity/search/(.*)/?",
+             "app.controllers.views.EntitySearchHandler"),
+            (r"/entity/new/(.*)/?",
+             "app.controllers.views.EntityNewHandler"),
+            (r"/entity/modify/(.*)/(.*)/?", 
+             "app.controllers.views.EntityModifyHandler"),
             ]
 
         ui_modules_map = {}

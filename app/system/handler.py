@@ -2,9 +2,9 @@ import tornado.web
 import logging
 import os
 from bson.json_util import dumps, loads
-from bson.objectid import ObjectId
 from tornado.escape import to_unicode
 from tornado.template import Loader
+from tornado.log import app_log
 from app.system.util.loader import load_by_name
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -29,7 +29,8 @@ class BaseHandler(tornado.web.RequestHandler):
         try:
             return load_by_name('app.system.cmf.%s' % (name.lower(),),
                                 name.capitalize())()
-        except ImportError:
+        except ImportError as e:
+            app_log.debug(e)
             return False
 
     # Page render

@@ -1,5 +1,6 @@
 # CMF types
 from app.system.db import Dbh
+from bson.objectid import ObjectId
 
 class Entity(object):
     """ helper class for converting entities to different formats """
@@ -20,3 +21,6 @@ class Entity(object):
     def collection(self):
         """ our collection manager """
         return self.db.set_collection(self.name())
+
+    def to_oid(self, oid):
+        return ObjectId(oid)
