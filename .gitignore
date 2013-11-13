@@ -3,3 +3,4 @@ env/*
 .dbconnection
 .twitterkey
 dev.sh
+__pycache__
