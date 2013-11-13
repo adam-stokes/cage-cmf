@@ -1,10 +1,7 @@
-from bson.objectid import ObjectId
+from app.system.cmf.types import Entity
 
-class Mood(object):
-    """ Mood CMF type """
+class Mood(Entity):
+    """ Mood document type """
 
-    def __init__(self, **kwds):
-        self._id = kwds.get('_id', ObjectId())
-        self.mood = kwds.get('mood', 'Undefined Mood')
-
+    pass
 

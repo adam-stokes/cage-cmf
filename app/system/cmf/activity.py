@@ -1,9 +1,6 @@
-from bson.objectid import ObjectId
-class Activity(object):
-    """ Activity CMF type """
+from app.system.cmf.types import Entity
 
-    def __init__(self, **kwds):
-        self._id = kwds.get('_id', ObjectId())
-        self.status = kwds.get('status', 'Undefined Status')
-        self.likes = kwds.get('likes', 0)
-
+class Activity(Entity):
+    """ Activity document """
+    cmf_name = 'activity'
+    pass

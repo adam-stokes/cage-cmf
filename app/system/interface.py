@@ -50,13 +50,14 @@ class Application(tornado.web.Application):
         urls = [
             (r"/", "app.controllers.views.IndexHandler"),
             (r"/entity/([A-Za-z0-9-]+$)", "app.controllers.views.EntityHandler"),
+            (r"/entity", "app.controllers.views.EntityHandler"),
             ]
 
         ui_modules_map = {}
         settings = dict(
             template_path=None,
             static_path=None,
-            xsrf_cookies=True,
+            xsrf_cookies=False if options.debug else True,
             cookie_secret=self.cfg.cookie_secret,
             debug=options.debug,
             ui_modules=ui_modules_map,
