@@ -16,7 +16,7 @@ class EntityHandler(BaseHandler):
             return self.render_json({'Error' : \
                                      'Unable to find entity %s' % (cmf_entity_name,)})
 
-        self.render_json(list(_e.collection.find())[:100])
+        self.render_json(_e.collection.find())
 
 class EntityNewHandler(BaseHandler):
     def post(self, cmf_entity_name=None):
