@@ -44,9 +44,6 @@ class BaseHandler(tornado.web.RequestHandler):
         content_json = dumps(content)
         self.set_header("Content-Type", "application/json")
         self.set_header("Access-Control-Allow-Origin", "*")
-        if self.is_argument_present("callback"):
-            self.write('%s(%s)' % (self.get_argument('callback'), content_json))
-        else:
-            self.write(content_json)
+        self.write(content_json)
         self.finish()
 
