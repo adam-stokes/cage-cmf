@@ -1,3 +1,5 @@
+import os
+
 class Config(object):
     def __init__(self, **kwds):
         # TODO use kwds to override defaults
@@ -6,7 +8,7 @@ class Config(object):
         self.db = { 
             'name' : 'cagecmf',
             'conn' : 'mongodb://localhost:27017/',
-            'env' : 'testing',
+            'env' : os.environ['CAGEENV'] if 'CAGEENV' in os.environ else 'testing',
         }
         self.template = 'default'
         self.static_path = None
