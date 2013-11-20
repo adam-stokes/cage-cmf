@@ -70,3 +70,7 @@ that'll handle a cluster of cage instances.
 # license
 
 MIT
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/battlemidget/cage-cmf/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
